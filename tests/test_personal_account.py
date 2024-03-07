@@ -1,17 +1,18 @@
+import urls
 from locators import Locators
 from pages.personal_account_page import PersonalAccount
 
 class TestPersonalAccount:
     def test_click_personal_account_button(self, driver):
         personal_acc = PersonalAccount(driver)
-        personal_acc.go_to_site('https://stellarburgers.nomoreparties.site/')
+        personal_acc.go_to_site(urls.MAIN_PAGE_URL)
         personal_acc.wait_for_invisibility_element(Locators.PRELOADER_ANIMATION)
         personal_acc.click_personal_account_button()
-        assert driver.current_url == 'https://stellarburgers.nomoreparties.site/login'
+        assert driver.current_url == urls.LOGIN_PAGE_URL
 
     def test_order_history_is_presented(self, driver):
         personal_acc = PersonalAccount(driver)
-        personal_acc.go_to_site('https://stellarburgers.nomoreparties.site/')
+        personal_acc.go_to_site(urls.MAIN_PAGE_URL)
         personal_acc.wait_for_invisibility_element(Locators.PRELOADER_ANIMATION)
         personal_acc.click_personal_account_button()
         personal_acc.make_authorization()
@@ -27,7 +28,7 @@ class TestPersonalAccount:
 
     def test_exit_personal_account(self, driver):
         personal_acc = PersonalAccount(driver)
-        personal_acc.go_to_site('https://stellarburgers.nomoreparties.site/')
+        personal_acc.go_to_site(urls.MAIN_PAGE_URL)
         personal_acc.wait_for_invisibility_element(Locators.PRELOADER_ANIMATION)
         personal_acc.click_personal_account_button()
         personal_acc.make_authorization()
@@ -40,6 +41,4 @@ class TestPersonalAccount:
         personal_acc.click_exit_button()
         personal_acc.wait_for_invisibility_element(Locators.PRELOADER_ANIMATION)
         personal_acc.wait_for_visibility(Locators.PROFILE_BUTTON_ENTER)
-        assert driver.current_url == 'https://stellarburgers.nomoreparties.site/login'
-
-
+        assert driver.current_url == urls.LOGIN_PAGE_URL

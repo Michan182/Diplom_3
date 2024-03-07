@@ -1,3 +1,4 @@
+import urls
 from locators import Locators
 from pages.order_feed_page import FeedOrder
 
@@ -5,7 +6,7 @@ from pages.order_feed_page import FeedOrder
 class TestFeedOrder:
     def test_order_details_is_displayed(self, driver):
         feed_order = FeedOrder(driver)
-        feed_order.go_to_site('https://stellarburgers.nomoreparties.site/')
+        feed_order.go_to_site(urls.MAIN_PAGE_URL)
         feed_order.wait_for_invisibility_element(Locators.PRELOADER_ANIMATION)
         feed_order.click_order_feed()
         feed_order.click_top_order_in_feed()
@@ -14,7 +15,7 @@ class TestFeedOrder:
 
     def test_order_in_history_displayed_in_feed(self, driver):
         feed_order = FeedOrder(driver)
-        feed_order.go_to_site('https://stellarburgers.nomoreparties.site/')
+        feed_order.go_to_site(urls.MAIN_PAGE_URL)
         feed_order.wait_for_invisibility_element(Locators.PRELOADER_ANIMATION)
         feed_order.click_personal_account_button()
         feed_order.make_authorization()
@@ -33,7 +34,7 @@ class TestFeedOrder:
 
     def test_count_all_time_orders_changed(self, driver):
         feed_order = FeedOrder(driver)
-        feed_order.go_to_site('https://stellarburgers.nomoreparties.site/')
+        feed_order.go_to_site(urls.MAIN_PAGE_URL)
         feed_order.wait_for_invisibility_element(Locators.PRELOADER_ANIMATION)
         feed_order.click_personal_account_button()
         feed_order.make_authorization()
@@ -50,7 +51,7 @@ class TestFeedOrder:
 
     def test_count_today_orders_changed(self, driver):
         feed_order = FeedOrder(driver)
-        feed_order.go_to_site('https://stellarburgers.nomoreparties.site/')
+        feed_order.go_to_site(urls.MAIN_PAGE_URL)
         feed_order.wait_for_invisibility_element(Locators.PRELOADER_ANIMATION)
         feed_order.click_personal_account_button()
         feed_order.make_authorization()
@@ -70,7 +71,7 @@ class TestFeedOrder:
 
     def test_order_in_progress(self, driver):
         feed_order = FeedOrder(driver)
-        feed_order.go_to_site('https://stellarburgers.nomoreparties.site/')
+        feed_order.go_to_site(urls.MAIN_PAGE_URL)
         feed_order.wait_for_invisibility_element(Locators.PRELOADER_ANIMATION)
         feed_order.click_personal_account_button()
         feed_order.make_authorization()
